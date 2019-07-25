@@ -5,7 +5,7 @@ USE `weibo`;
 DROP TABLE IF EXISTS `login_info`;
 
 CREATE TABLE `login_info` (
-  `id` int(10) unsigned NOT NULL COMMENT '主键自增ID',
+  `id` int(30) unsigned NOT NULL COMMENT '主键自增ID',
   `name` varchar(100) NOT NULL UNIQUE COMMENT '账户名',
   `password` varchar(200) NOT NULL COMMENT '密码',
   `enable` int(1) unsigned NOT NULL DEFAULT 1 COMMENT '账户状态，1-->可用，2-->密码错误,0-->被封',
@@ -17,7 +17,15 @@ CREATE TABLE `login_info` (
 DROP TABLE IF EXISTS `wbuser`;
 
 CREATE TABLE `wbuser` (
-  //
+  `id` int(30) unsigned NOT NULL COMMENT '主键自增ID',
+  `uid` varchar(20) NOT NULL UNIQUE COMMENT 'UID',
+  `name` varchar(100) NOT NULL UNIQUE COMMENT '账户名',
+  `gender` varchar(10) DEFAULT 'unknown' COMMENT '男：male，女：female，不知：unknown',
+  `birthday` varchar(50) DEFAULT '' COMMENT '生日',
+  `location` varchar(100) DEFAULT '' COMMENT '地址',
+  `description` varchar(500) DEFAULT '' COMMENT '个人简介',
+  `register_time` timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
+  ``
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
 
 DROP TABLE IF EXISTS `seed_ids`;
