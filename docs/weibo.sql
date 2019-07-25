@@ -5,7 +5,13 @@ USE `weibo`;
 DROP TABLE IF EXISTS `login_info`;
 
 CREATE TABLE `login_info` (
-  //
+  `id` int(10) unsigned NOT NULL COMMENT '主键自增ID',
+  `name` varchar(100) NOT NULL UNIQUE COMMENT '账户名',
+  `password` varchar(200) NOT NULL COMMENT '密码',
+  `enable` int(1) unsigned NOT NULL DEFAULT 1 COMMENT '账户状态，1-->可用，2-->密码错误,0-->被封',
+  PRIMARY KEY (`id`),
+  KEY `index_name` (`name`),
+  KEY `index_enable` (`enable`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='微博账号表';
 
 DROP TABLE IF EXISTS `wbuser`;
