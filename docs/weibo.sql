@@ -17,7 +17,7 @@ CREATE TABLE `login_info` (
 DROP TABLE IF EXISTS `wbuser`;
 
 CREATE TABLE `wbuser` (
-  `id` int(30) unsigned NOT NULL COMMENT '主键自增ID',
+  `id` int(30) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键自增ID',
   `uid` varchar(20) NOT NULL UNIQUE COMMENT 'UID',
   `name` varchar(100) NOT NULL UNIQUE COMMENT '账户名',
   `gender` varchar(10) DEFAULT 'unknown' COMMENT '男：male，女：female，不知：unknown',
@@ -25,7 +25,17 @@ CREATE TABLE `wbuser` (
   `location` varchar(100) DEFAULT '' COMMENT '地址',
   `description` varchar(500) DEFAULT '' COMMENT '个人简介',
   `register_time` timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
-  ``
+  `verify_type` int(1) NOT NULL DEFAULT 0,
+  `verify_info` varchar(2500) NOT NULL DEFAULT '',
+  `follows_num` int(11) NOT NULL DEFAULT 0,
+  `fans_num` int(11) NOT NULL DEFAULT 0,
+  `wb_num` int(10) NOT NULL DEFAULT 0,
+  `level` int(2) NOT NULL DEFAULT 0,
+  `tags` varchar(500) NOT NULL DEFAULT '',
+  `work_info` varchar(500) NOT NULL DEFAULT '',
+  `contact_info` varchar(300) NOT NULL DEFAULT '',
+  `education_info` varchar(300) NOT NULL DEFAULT '',
+  `head_img` varchar(500) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
 
 DROP TABLE IF EXISTS `seed_ids`;
@@ -42,36 +52,36 @@ CREATE TABLE `seed_ids` (
 DROP TABLE IF EXISTS `keywords`;
 
 CREATE TABLE `keywords` (
-  //
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='话题关键字表';
 
 DROP TABLE IF EXISTS `weibo_data`;
 
 CREATE TABLE `weibo_data` (
-  //
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='微博feed数据表';
 
 DROP TABLE IF EXISTS `keywords_wbdata`;
 
 CREATE TABLE `keywords_wbdata` (
-  //
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='微博id和关键字关联表';
 
 DROP TABLE IF EXISTS `weibo_comment`;
 
 CREATE TABLE `weibo_comment` (
-  //
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='评论信息表';
 
 DROP TABLE IF EXISTS `weibo_repost`;
 
 CREATE TABLE `weibo_repost` (
-  //
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='转发信息表';
 
 DROP TABLE IF EXISTS `user_relation`;
 
 CREATE TABLE `user_relation` (
-  //
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户关系表';
 
