@@ -1,10 +1,10 @@
-# coding:utf-8
 import os
 import random
+from pathlib import Path
+
 from yaml import load
 
 config_path = os.path.join(os.path.dirname(__file__), 'spider.yaml')
-
 
 with open(config_path, encoding='utf-8') as f:
     cont = f.read()
@@ -47,6 +47,10 @@ def get_max_home_page():
 
 def get_max_comment_page():
     return cf.get('max_comment_page')
+
+
+def get_max_dialogue_page():
+    return cf.get('max_dialogue_page')
 
 
 def get_max_retries():
@@ -102,3 +106,24 @@ def get_cookie_expire_time():
 def get_email_args():
     return cf.get('email')
 
+
+def get_images_allow():
+    return cf.get('images_allow')
+
+
+def get_images_path():
+    img_dir = cf.get('images_path') if cf.get('images_path') else os.path.join(str(Path.home()), 'weibospider', 'images')
+    if not os.path.exists(img_dir):
+        os.makedirs(img_dir)
+    return img_dir
+
+
+def get_images_type():
+    return cf.get('image_type')
+
+
+def get_time_after():
+    return cf.get('time_after')
+
+def get_samefollow_uid():
+    return cf.get('samefollow_uid')
