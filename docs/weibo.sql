@@ -31,7 +31,12 @@ CREATE TABLE `wbuser` (
 DROP TABLE IF EXISTS `seed_ids`;
 
 CREATE TABLE `seed_ids` (
-  //
+  `id` int(30) unsigned NOT NULL COMMENT '主键自增ID',
+  `uid` varchar(20) NOT NULL UNIQUE COMMENT 'UID',
+  `is_crawled` int(1) NOT NULL DEFAULT 0,
+  `other_crawled` int(1) NOT NULL DEFAULT 0,
+  `home_crawled` int(1) NOT NULL DEFAULT 0,
+  primary key (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='种子用户表';
 
 DROP TABLE IF EXISTS `keywords`;
